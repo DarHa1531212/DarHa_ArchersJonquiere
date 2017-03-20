@@ -15,31 +15,10 @@
         android:layout_height="wrap_content"
         android:text="DANGER"
         android:id="@+id/button"
-        android:layout_below="@+id/Arret"
-        android:layout_centerHorizontal="true"
         android:onClick="interrompreTimer"
-        android:layout_centerInParent="true"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="cancel"
-        android:id="@+id/Arret"
-        android:layout_below="@+id/Debut"
-        android:layout_centerHorizontal="true"
-        android:onClick="terminerTimer"
-        android:layout_centerInParent="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:background="#5BFF2E"
-        android:id="@+id/Debut"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="DemarrerTimer"
-        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,11 +27,21 @@
         android:id="@+id/Temps"
         android:fontFamily="sans-serif"
         android:onClick="start"
-        android:layout_above="@+id/Debut"
-        android:layout_centerHorizontal="true"
-        style="@style/texteBlanc"/>
+        style="@style/texteBlanc"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:id="@+id/volee"/>
 
 
 </RelativeLayout>
