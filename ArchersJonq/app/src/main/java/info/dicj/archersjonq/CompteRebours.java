@@ -21,6 +21,7 @@ public class CompteRebours extends AppCompatActivity {
     private int CompteDepuis;
     private View v;
     private TextView volee;
+    private TextView ProchainGroupeDeTir;
     private Button debuter;
     private Button arret;
     /*ptivate string[] prochain["AB", "CD", "CD", "AB"];*/
@@ -29,24 +30,36 @@ public class CompteRebours extends AppCompatActivity {
     private long temps = 120;
     private boolean enCours = false;
     private Boolean Danger = false;
+    private int i=0;
     String[] prochainGroupeDeTir = {
             "AB",
             "CD",
-            "AB",
             "CD",
+            "AB",
     };
     final ThreadLocal<Runnable> runnable = new ThreadLocal<Runnable>() {
         @Override
         protected Runnable initialValue() {
+
             return new Runnable() {
                 @Override
                 public void run() {
                     Log.d("timer", "timer running");
                     if (enCours == true && Danger == false)
                     temps--;
+
+
                     if (temps == 0)
-                    {
-                        ((TextView) findViewById(R.id.Temps)).setText("" + "AB");
+                    { if ( CompteDepuis ==120 )
+                        {
+                            i++;
+                            if (i==4    )
+                            {    i=0;}
+
+                            temps = 0;
+                            ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("*"  + i + prochainGroupeDeTir[i]);
+                            ((TextView) findViewById(R.id.Temps)).setText("*" +i+ prochainGroupeDeTir[i]);
+                        }
                         enCours = false;
                         //si le compte à rebours a été initialisé à 10 seconndes, il faut démarrer le compte à rebours de tir
                         if (CompteDepuis == 10) {
@@ -55,6 +68,7 @@ public class CompteRebours extends AppCompatActivity {
                         }
                     }
                     if (temps > 0 ) {
+                        ((TextView) findViewById(R.id.Temps)).setText("" + temps);
 
                         handler.postDelayed(this, 1000);
                         if (temps == 30) {
@@ -66,7 +80,7 @@ public class CompteRebours extends AppCompatActivity {
                         findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(255, 255, 0, 0));
                         enCours = false;
                     }
-                    ((TextView) findViewById(R.id.Temps)).setText("" + temps);
+
 
                 }
             };
@@ -129,8 +143,18 @@ public void DemarrerTimer(View view1)
   {
       if (Danger == false)
       {
-          Log.d ("timer", "fonction d'erret");
-          temps = 0;
+          Log.d ("timer", "fonction d'arret");
+          if ( CompteDepuis ==120 )
+          {
+              i++;
+              if (i==4    )
+              {    i=0;}
+
+              temps = 0;
+              ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("*"  + i + prochainGroupeDeTir[i]);
+              ((TextView) findViewById(R.id.Temps)).setText("*" +i+ prochainGroupeDeTir[i]);
+          }
+
 
 
       }
@@ -149,7 +173,7 @@ public void AllerSurLigneDeTir(View view1)
     findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(255, 255, 0, 0));
     changeVolee(view1);
 
-    Toast.makeText(getApplicationContext(), "fin de la preparation du tir", Toast.LENGTH_LONG).show();
+ //   Toast.makeText(getApplicationContext(), "fin de la preparation du tir", Toast.LENGTH_LONG).show();
 
 
 
@@ -176,17 +200,14 @@ public void Tirer(View view1)
        Log.d ("timer", "fonction d'arret");
         temps = 0;
     }
-
+//le start ici
     public void start(View v) {
-        timer.setText("30");
+     //   timer.setText("30");
         countDownTimer:
         new CountDownTimer(30000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
-
-
-                Toast.makeText(getApplicationContext(), "fin de la preparation du tir", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -222,7 +243,7 @@ public void Tirer(View view1)
                 // TODO: Make sure this auto-generated app URL is correct.
                 Uri.parse("android-app://info.dicj.archersjonq/http/host/path")
         );
-        AppIndex.AppIndexApi.start(client, viewAction);
+      //  AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
