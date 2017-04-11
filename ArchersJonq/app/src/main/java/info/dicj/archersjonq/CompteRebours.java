@@ -25,7 +25,7 @@ public class CompteRebours extends AppCompatActivity {
     private Button debuter;
     private Button arret;
     /*ptivate string[] prochain["AB", "CD", "CD", "AB"];*/
-    int voleeEnCours = 0;
+    int voleeEnCours = 4;
     private CountDownTimer CountDowntimer;
     private long temps = 120;
     private boolean enCours = false;
@@ -50,15 +50,26 @@ public class CompteRebours extends AppCompatActivity {
 
 
                     if (temps == 0)
-                    { if ( CompteDepuis ==120 )
+                    {                            changeVolee(v);
+                        if ( CompteDepuis ==120 )
                         {
-                            i++;
-                            if (i==4    )
-                            {    i=0;}
+                            if (voleeEnCours == 44)
+                            {
+                                ((TextView) findViewById(R.id.Temps)).setText("fini");
+                                ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("" );
+                                ((TextView) findViewById(R.id.volee)).setText("" );
+                            }
+                            else {
+                                i++;
+                                if (i == 4) {
+                                    i = 0;
+                                }
 
-                            temps = 0;
-                            ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("*"  + i + prochainGroupeDeTir[i]);
-                            ((TextView) findViewById(R.id.Temps)).setText("*" +i+ prochainGroupeDeTir[i]);
+                                temps = 0;
+                                ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("" + prochainGroupeDeTir[i]);
+                                ((TextView) findViewById(R.id.Temps)).setText("" + prochainGroupeDeTir[i]);
+
+                            }
                         }
                         enCours = false;
                         //si le compte à rebours a été initialisé à 10 seconndes, il faut démarrer le compte à rebours de tir
@@ -68,9 +79,10 @@ public class CompteRebours extends AppCompatActivity {
                         }
                     }
                     if (temps > 0 ) {
-                        ((TextView) findViewById(R.id.Temps)).setText("" + temps);
+                        int tempsRestant = (int)temps% 60;
+                        ((TextView) findViewById(R.id.Temps)).setText("" +(int)Math.floor(temps/60)+":" +String.format("%02d", tempsRestant) );
 
-                        handler.postDelayed(this, 1000);
+                        handler.postDelayed(this, 1000);/*remettre a 1000*/
                         if (temps == 30) {
                             findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100,255 , 168, 8));
                         }
@@ -114,54 +126,48 @@ public class CompteRebours extends AppCompatActivity {
     }
 public void DemarrerTimer(View view1)
 {
-  if (enCours == false) {
+ if(voleeEnCours < 44) {
+
+     if (enCours == false) {
 
      /* détermine si on doit amorcer le compte à rebours pour aller sur la ligne de tir ou démarrer le tir*/
-      if (Danger == false)
-      {
-          if (voleeEnCours % 2 == 0)
-          {
-              AllerSurLigneDeTir(view1);
-          }
-          else{
-              Tirer(view1);
-          }
-      }
+         if (Danger == false) {
+             if (voleeEnCours % 2 == 0) {
+                 AllerSurLigneDeTir(view1);
+             } else {
+                 Tirer(view1);
+             }
+         }
 
 
-      enCours = true;
+         enCours = true;
 
 
-      Log.d("timer", "timer stating");
+         Log.d("timer", "timer stating");
 
 
-      Danger = false;
+         Danger = false;
 
-  }
-
-    else
-  {
-      if (Danger == false)
-      {
-          Log.d ("timer", "fonction d'arret");
-          if ( CompteDepuis ==120 )
-          {
-              i++;
-              if (i==4    )
-              {    i=0;}
-
-              temps = 0;
-              ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("*"  + i + prochainGroupeDeTir[i]);
-              ((TextView) findViewById(R.id.Temps)).setText("*" +i+ prochainGroupeDeTir[i]);
-          }
+     } else {
+         if (Danger == false) {
+             Log.d("timer", "fonction d'arret");
+             if (CompteDepuis == 120) {
+                 i++;
+                 if (i == 4) {
+                     i = 0;
+                 }
+                 changeVolee(v);
+                 temps = 0;
+                 ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("" +prochainGroupeDeTir[i]);
+                 ((TextView) findViewById(R.id.Temps)).setText("" + prochainGroupeDeTir[i]);
+             }
 
 
+         }
 
-      }
 
-
-    }
-
+     }
+ }
 }
 
 public void AllerSurLigneDeTir(View view1)
@@ -171,7 +177,7 @@ public void AllerSurLigneDeTir(View view1)
     CompteDepuis = 10;
 
     findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(255, 255, 0, 0));
-    changeVolee(view1);
+    // changeVolee(view1);
 
  //   Toast.makeText(getApplicationContext(), "fin de la preparation du tir", Toast.LENGTH_LONG).show();
 
@@ -186,7 +192,7 @@ public void Tirer(View view1)
     temps = 121;
     CompteDepuis = 120;
     findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100, 0, 255, 24));
-    changeVolee(view1);
+ //   changeVolee(view1);
 
 }
 
@@ -221,7 +227,8 @@ public void Tirer(View view1)
     public void changeVolee(View view1)
     {
         voleeEnCours++;
-        volee.setText("" + Math.ceil(voleeEnCours/2));
+       // volee.setText("" + (int)Math.ceil(voleeEnCours/4));
+        ((TextView) findViewById(R.id.volee)).setText(""+(int)Math.ceil(voleeEnCours/4));
 
     }
 

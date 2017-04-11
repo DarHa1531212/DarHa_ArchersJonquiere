@@ -7,23 +7,25 @@
 
     tools:context="info.dicj.archersjonq.CompteRebours"
     android:id="@+id/arrierePlan"
-    android:background="#5BFF2E"
+    android:background="#eb0c08"
     android:clickable="true"
     android:onClick="DemarrerTimer">
+
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DANGER"
-        android:id="@+id/button"
-        android:onClick="interrompreTimer"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="interrompreTimer"
+        android:text="DANGER"
+        tools:background="@color/rouge" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="timer"
+        android:text="AB"
         android:id="@+id/Temps"
         android:fontFamily="sans-serif"
         android:onClick="start"
@@ -32,6 +34,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
+        android:id="@+id/volee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -41,7 +44,8 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        android:id="@+id/volee"/>
+        android:textSize="18sp"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/ProchainGroupeDeTir"
@@ -52,7 +56,8 @@
         android:layout_alignTop="@+id/volee"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="24sp" />
 
 
 </RelativeLayout>
