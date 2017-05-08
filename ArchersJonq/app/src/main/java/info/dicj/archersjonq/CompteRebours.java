@@ -1,13 +1,17 @@
 package info.dicj.archersjonq;
 
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +35,18 @@ public class CompteRebours extends AppCompatActivity {
     private boolean enCours = false;
     private Boolean Danger = false;
     private int i=0;
+    SoundPool deuxcoups;
+    int deuxcoupsID;
+
+    SoundPool uncoup;
+    int uncoupID;
+
+    SoundPool troiscoups;
+    int troiscoupsID;
+
+    SoundPool danger;
+    int dangerID;
+
     String[] prochainGroupeDeTir = {
             "AB",
             "CD",
@@ -52,7 +68,8 @@ public class CompteRebours extends AppCompatActivity {
                     if (temps == 0)
                     {                            changeVolee(v);
                         if ( CompteDepuis ==120 )
-                        {
+                        {troiscoups.play(troiscoupsID,1,1,1,0,1);
+
                             if (voleeEnCours == 44)
                             {
                                 ((TextView) findViewById(R.id.Temps)).setText("fini");
@@ -84,7 +101,7 @@ public class CompteRebours extends AppCompatActivity {
 
                         handler.postDelayed(this, 1000);/*remettre a 1000*/
                         if (temps == 30) {
-                            findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100,255 , 168, 8));
+                            findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100,255 , 166, 0));
                         }
 
                     } else {
@@ -110,7 +127,21 @@ public class CompteRebours extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_compte_rebours);
+
+        deuxcoups = new SoundPool(1, AudioManager.STREAM_ALARM, 0);
+        deuxcoupsID = deuxcoups.load(this, R.raw.deuxcoups, 1);
+
+        uncoup = new SoundPool (1, AudioManager.STREAM_ALARM, 0);
+        uncoupID = uncoup.load (this, R.raw.uncoup, 1);
+
+        troiscoups = new SoundPool (1, AudioManager.STREAM_ALARM, 0);
+        troiscoupsID = troiscoups.load(this, R.raw.troiscoups,1);
+
+        danger = new SoundPool(1, AudioManager.STREAM_ALARM, 0);
+        dangerID = danger.load(this, R.raw.danger, 1);
+
         timer = (TextView) findViewById(R.id.Temps);
         volee = (TextView) findViewById(R.id.volee);
 
@@ -150,6 +181,7 @@ public void DemarrerTimer(View view1)
 
      } else {
          if (Danger == false) {
+             troiscoups.play(troiscoupsID,1,1,1,0,1);
              Log.d("timer", "fonction d'arret");
              if (CompteDepuis == 120) {
                  i++;
@@ -172,6 +204,8 @@ public void DemarrerTimer(View view1)
 
 public void AllerSurLigneDeTir(View view1)
 {
+
+    deuxcoups.play(deuxcoupsID,1,1,1,0,1);
     handler.postDelayed(runnable.get(), 0);
     temps = 11;
     CompteDepuis = 10;
@@ -187,11 +221,12 @@ public void AllerSurLigneDeTir(View view1)
 
 public void Tirer(View view1)
 {
+    uncoup.play(uncoupID,1,1,1,0,1);
     enCours = true;
     handler.postDelayed(runnable.get(), 0);
     temps = 121;
     CompteDepuis = 120;
-    findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100, 0, 255, 24));
+    findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100, 0, 255, 0));
  //   changeVolee(view1);
 
 }
@@ -200,6 +235,8 @@ public void Tirer(View view1)
     {
         enCours = false;
         Danger = true;
+//faire jouer le sond
+        danger.play(dangerID,1,1,1,0,1);
 
     }
     public void terminerTimer (View view1){
