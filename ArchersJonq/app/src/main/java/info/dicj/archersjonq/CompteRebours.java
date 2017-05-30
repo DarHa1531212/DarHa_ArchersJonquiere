@@ -66,10 +66,13 @@ public class CompteRebours extends AppCompatActivity {
 
 
                     if (temps == 0)
-                    {                            changeVolee(v);
+                    {
+                        changeVolee(v);
                         if ( CompteDepuis ==120 )
-                        {troiscoups.play(troiscoupsID,1,1,1,0,1);
-
+                        {
+                            if (voleeEnCours % 4 == 0 ) {
+                                troiscoups.play(troiscoupsID, 1, 1, 1, 0, 1);
+                            }
                             if (voleeEnCours == 44)
                             {
                                 ((TextView) findViewById(R.id.Temps)).setText("fini");
@@ -101,7 +104,7 @@ public class CompteRebours extends AppCompatActivity {
 
                         handler.postDelayed(this, 1000);/*remettre a 1000*/
                         if (temps == 30) {
-                            findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(100,255 , 166, 0));
+                            findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(250,255 , 165, 0));
                         }
 
                     } else {
@@ -181,7 +184,9 @@ public void DemarrerTimer(View view1)
 
      } else {
          if (Danger == false) {
-             troiscoups.play(troiscoupsID,1,1,1,0,1);
+             if (voleeEnCours % 4 == 3 ) {
+                 troiscoups.play(troiscoupsID, 1, 1, 1, 0, 1);
+             }
              Log.d("timer", "fonction d'arret");
              if (CompteDepuis == 120) {
                  i++;

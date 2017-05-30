@@ -19,10 +19,13 @@
         android:text="AB"
         android:id="@+id/Temps"
         android:fontFamily="sans-serif"
-        android:onClick="start"
         style="@style/texteBlanc"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="250dp"
+        />
+    <!--android:onClick="start"-->
+
 
     <TextView
         android:id="@+id/volee"
@@ -34,8 +37,9 @@
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
-        android:text=""
-        android:textSize="18sp"
+        android:text="1"
+
+        android:textSize="100sp"
         />
 
     <TextView
@@ -46,8 +50,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/volee"
         android:layout_marginEnd="25dp"
+        android:text="AB"
         android:layout_marginRight="25dp"
-        android:textSize="24sp" />
+        android:textSize="100sp" />
 
     <ImageView
         android:id="@+id/imageView"
