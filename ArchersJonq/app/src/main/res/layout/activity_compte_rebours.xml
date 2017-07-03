@@ -64,5 +64,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp" />
 
+    <Button
+        android:id="@+id/miseAZero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/volee"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/volee"
+        android:layout_marginBottom="31dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:onClick="miseAZero"
+        android:text="Button" />
+
 
 </RelativeLayout>

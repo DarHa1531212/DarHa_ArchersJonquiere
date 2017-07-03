@@ -158,6 +158,13 @@ public class CompteRebours extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+    public void miseAZero()
+    {
+
+        i=0;
+        voleeEnCours=4;
+    }
+
 public void DemarrerTimer(View view1)
 {
  if(voleeEnCours < 44) {
