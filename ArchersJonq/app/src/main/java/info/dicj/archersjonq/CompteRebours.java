@@ -28,6 +28,7 @@ public class CompteRebours extends AppCompatActivity {
     private TextView ProchainGroupeDeTir;
     private Button debuter;
     private Button arret;
+    private Button remisea0;
     /*ptivate string[] prochain["AB", "CD", "CD", "AB"];*/
     int voleeEnCours = 4;
     private CountDownTimer CountDowntimer;
@@ -158,12 +159,6 @@ public class CompteRebours extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-    public void miseAZero()
-    {
-
-        i=0;
-        voleeEnCours=4;
-    }
 
 public void DemarrerTimer(View view1)
 {
@@ -213,6 +208,15 @@ public void DemarrerTimer(View view1)
      }
  }
 }
+    public void miseAZero(View view1)
+    {
+
+        i=0;
+        voleeEnCours=4;
+        ((TextView) findViewById(R.id.Temps)).setText("");
+        ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("" );
+        ((TextView) findViewById(R.id.volee)).setText("" );
+    }
 
 public void AllerSurLigneDeTir(View view1)
 {

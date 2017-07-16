@@ -75,7 +75,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginStart="26dp"
         android:onClick="miseAZero"
-        android:text="Button" />
+        android:text="remettre à 0" />
 
 
 </RelativeLayout>
