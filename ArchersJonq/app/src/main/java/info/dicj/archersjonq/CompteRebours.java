@@ -105,7 +105,7 @@ public class CompteRebours extends AppCompatActivity {
 
                         handler.postDelayed(this, 1000);/*remettre a 1000*/
                         if (temps == 30) {
-                            findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(250,255 , 165, 0));
+                            findViewById(R.id.arrierePlan).setBackgroundColor(Color.argb(250,255 , 255, 0));
                         }
 
                     } else {
@@ -210,12 +210,12 @@ public void DemarrerTimer(View view1)
 }
     public void miseAZero(View view1)
     {
-
+        enCours = false;
         i=0;
         voleeEnCours=4;
         ((TextView) findViewById(R.id.Temps)).setText("");
-        ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("" );
-        ((TextView) findViewById(R.id.volee)).setText("" );
+        ((TextView) findViewById(R.id.ProchainGroupeDeTir)).setText("AB" );
+        ((TextView) findViewById(R.id.volee)).setText("1" );
     }
 
 public void AllerSurLigneDeTir(View view1)
