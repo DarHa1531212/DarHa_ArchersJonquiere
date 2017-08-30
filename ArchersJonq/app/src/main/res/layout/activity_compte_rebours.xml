@@ -77,5 +77,19 @@
         android:onClick="miseAZero"
         android:text="remettre à 0" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/food"
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="26dp"
+        android:layout_alignBottom="@+id/miseAZero"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="OnClickButtonListener"/>
+
 
 </RelativeLayout>

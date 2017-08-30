@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eb0c08"
+
+    tools:context="com.exemple.programmingknowledge.app.SelectiontimerActivity">
+
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/texteBlanc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="325dp"
+        android:layout_marginStart="325dp"
+        android:layout_marginTop="90dp"
+        android:text="Heures:"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="281dp" />
+
+    <EditText
+        android:id="@+id/txtMinutes"
+        android:layout_width="wrap_content"
+        style="@style/texteBlanc"
+
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="0"
+        android:textSize="36sp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="428dp"
+        tools:layout_editor_absoluteY="260dp"
+        tools:text="0"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/txtHeures"
+        android:layout_alignStart="@+id/txtHeures" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/texteBlanc"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Minutes:"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="281dp"
+        android:layout_below="@+id/txtHeures"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/txtHeures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="0"
+        android:textSize="36sp"
+        style="@style/texteBlanc"
+
+        tools:layout_editor_absoluteX="435dp"
+        tools:layout_editor_absoluteY="356dp"
+        tools:text="0"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_marginLeft="128dp"
+        android:layout_marginStart="128dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
+        android:text="Confirmer"
+        android:textSize="36sp"
+        android:layout_below="@+id/txtMinutes"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+</RelativeLayout>
+
+

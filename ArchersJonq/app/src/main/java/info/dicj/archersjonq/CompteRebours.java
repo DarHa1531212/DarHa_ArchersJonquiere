@@ -1,5 +1,6 @@
 package info.dicj.archersjonq;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +31,9 @@ public class CompteRebours extends AppCompatActivity {
     private Button debuter;
     private Button arret;
     private Button remisea0;
-    /*ptivate string[] prochain["AB", "CD", "CD", "AB"];*/
+    private ImageButton imgbtnSelectionnerTemps;
+    /*ptivate string[] prochain["A
+    ", "CD", "CD", "AB"];*/
     int voleeEnCours = 4;
     private CountDownTimer CountDowntimer;
     private long temps = 120;
@@ -159,7 +163,20 @@ public class CompteRebours extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+public void OnClickButtonListener(View v)
+    {
+        imgbtnSelectionnerTemps = (ImageButton) findViewById(R.id.imageButton);
+        imgbtnSelectionnerTemps.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent("com.exemple.programmingknowledge.app.SelectiontimerActivity");
+                        startActivity(intent);
+                    }
+                }
+        );
 
+    }
 public void DemarrerTimer(View view1)
 {
  if(voleeEnCours < 44) {
@@ -221,8 +238,10 @@ public void DemarrerTimer(View view1)
 public void AllerSurLigneDeTir(View view1)
 {
 
+    handler.postDelayed(runnable.get(), 1500);
     deuxcoups.play(deuxcoupsID,1,1,1,0,1);
-    handler.postDelayed(runnable.get(), 0);
+
+
     temps = 11;
     CompteDepuis = 10;
 
